@@ -7,8 +7,8 @@ import { Product, products } from '../products';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
-  constructor() {}
+export class ProductDetailsComponent {
+  product!: Product;
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute) {}
 }
