@@ -7,8 +7,15 @@ import { Product, products } from '../products';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent {
-  product!: Product;
+export class ProductDetailsComponent implements OnInit {
+  product: Product | undefined;
 
   constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('productId'));
+
+    this.product = products.find(x => x.id === productIdFromRoute);
+  }
 }
